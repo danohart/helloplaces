@@ -206,4 +206,21 @@ export const lists: Lists = {
       },
     },
   }),
+
+  FavoritesList: list({
+    fields: {
+      url: text({
+        isIndexed: 'unique',
+      }),
+      places: relationship({ ref: 'Place', many: true, }),
+    },
+    access: {
+      operation: {
+        query: ({ session, context, listKey, operation }) => true,
+        create: ({ session, context, listKey, operation }) => true,
+        update: ({ session, context, listKey, operation }) => true,
+        delete: ({ session, context, listKey, operation }) => false,
+      },
+    },
+  }),
 };
