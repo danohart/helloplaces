@@ -21,21 +21,22 @@ model User {
 }
 
 model Place {
-  id             String             @id @default(uuid()) @postgresql.Uuid
-  featured       Boolean            @default(false)
-  name           String             @unique @default("")
-  address        String             @default("")
-  website        String             @default("")
-  neighborhood   PlaceNeighborhood? @relation("Place_neighborhood", fields: [neighborhoodId], references: [id])
-  neighborhoodId String?            @map("neighborhood") @postgresql.Uuid
-  image          Json?
-  description    Json               @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
-  mainCategory   PlaceCategory?     @relation("Place_mainCategory", fields: [mainCategoryId], references: [id])
-  mainCategoryId String?            @map("mainCategory") @postgresql.Uuid
-  subCategory    PlaceCategory?     @relation("Place_subCategory", fields: [subCategoryId], references: [id])
-  subCategoryId  String?            @map("subCategory") @postgresql.Uuid
-  time           PlaceTime[]        @relation("Place_time")
-  details        PlaceDetail[]      @relation("Place_details")
+  id                        String             @id @default(uuid()) @postgresql.Uuid
+  featured                  Boolean            @default(false)
+  name                      String             @unique @default("")
+  address                   String             @default("")
+  website                   String             @default("")
+  neighborhood              PlaceNeighborhood? @relation("Place_neighborhood", fields: [neighborhoodId], references: [id])
+  neighborhoodId            String?            @map("neighborhood") @postgresql.Uuid
+  image                     Json?
+  description               Json               @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
+  mainCategory              PlaceCategory?     @relation("Place_mainCategory", fields: [mainCategoryId], references: [id])
+  mainCategoryId            String?            @map("mainCategory") @postgresql.Uuid
+  subCategory               PlaceCategory?     @relation("Place_subCategory", fields: [subCategoryId], references: [id])
+  subCategoryId             String?            @map("subCategory") @postgresql.Uuid
+  time                      PlaceTime[]        @relation("Place_time")
+  details                   PlaceDetail[]      @relation("Place_details")
+  from_FavoritesList_places FavoritesList[]    @relation("FavoritesList_places")
 
   @@index([neighborhoodId])
   @@index([mainCategoryId])
@@ -66,4 +67,10 @@ model PlaceCategory {
   name                    String  @unique @default("")
   from_Place_mainCategory Place[] @relation("Place_mainCategory")
   from_Place_subCategory  Place[] @relation("Place_subCategory")
+}
+
+model FavoritesList {
+  id     String  @id @default(uuid()) @postgresql.Uuid
+  url    String  @unique @default("")
+  places Place[] @relation("FavoritesList_places")
 }

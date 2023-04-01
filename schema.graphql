@@ -496,6 +496,65 @@ input PlaceCategoryCreateInput {
   name: String
 }
 
+type FavoritesList {
+  id: ID!
+  url: String
+  places(where: PlaceWhereInput! = {}, orderBy: [PlaceOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PlaceWhereUniqueInput): [Place!]
+  placesCount(where: PlaceWhereInput! = {}): Int
+}
+
+input FavoritesListWhereUniqueInput {
+  id: ID
+  url: String
+}
+
+input FavoritesListWhereInput {
+  AND: [FavoritesListWhereInput!]
+  OR: [FavoritesListWhereInput!]
+  NOT: [FavoritesListWhereInput!]
+  id: IDFilter
+  url: StringFilter
+  places: PlaceManyRelationFilter
+}
+
+input PlaceManyRelationFilter {
+  every: PlaceWhereInput
+  some: PlaceWhereInput
+  none: PlaceWhereInput
+}
+
+input FavoritesListOrderByInput {
+  id: OrderDirection
+  url: OrderDirection
+}
+
+input FavoritesListUpdateInput {
+  url: String
+  places: PlaceRelateToManyForUpdateInput
+}
+
+input PlaceRelateToManyForUpdateInput {
+  disconnect: [PlaceWhereUniqueInput!]
+  set: [PlaceWhereUniqueInput!]
+  create: [PlaceCreateInput!]
+  connect: [PlaceWhereUniqueInput!]
+}
+
+input FavoritesListUpdateArgs {
+  where: FavoritesListWhereUniqueInput!
+  data: FavoritesListUpdateInput!
+}
+
+input FavoritesListCreateInput {
+  url: String
+  places: PlaceRelateToManyForCreateInput
+}
+
+input PlaceRelateToManyForCreateInput {
+  create: [PlaceCreateInput!]
+  connect: [PlaceWhereUniqueInput!]
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -538,6 +597,12 @@ type Mutation {
   updatePlaceCategories(data: [PlaceCategoryUpdateArgs!]!): [PlaceCategory]
   deletePlaceCategory(where: PlaceCategoryWhereUniqueInput!): PlaceCategory
   deletePlaceCategories(where: [PlaceCategoryWhereUniqueInput!]!): [PlaceCategory]
+  createFavoritesList(data: FavoritesListCreateInput!): FavoritesList
+  createFavoritesLists(data: [FavoritesListCreateInput!]!): [FavoritesList]
+  updateFavoritesList(where: FavoritesListWhereUniqueInput!, data: FavoritesListUpdateInput!): FavoritesList
+  updateFavoritesLists(data: [FavoritesListUpdateArgs!]!): [FavoritesList]
+  deleteFavoritesList(where: FavoritesListWhereUniqueInput!): FavoritesList
+  deleteFavoritesLists(where: [FavoritesListWhereUniqueInput!]!): [FavoritesList]
   endSession: Boolean!
   authenticateUserWithPassword(email: String!, password: String!): UserAuthenticationWithPasswordResult
   createInitialUser(data: CreateInitialUserInput!): UserAuthenticationWithPasswordSuccess!
@@ -579,6 +644,9 @@ type Query {
   placeCategories(where: PlaceCategoryWhereInput! = {}, orderBy: [PlaceCategoryOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PlaceCategoryWhereUniqueInput): [PlaceCategory!]
   placeCategory(where: PlaceCategoryWhereUniqueInput!): PlaceCategory
   placeCategoriesCount(where: PlaceCategoryWhereInput! = {}): Int
+  favoritesLists(where: FavoritesListWhereInput! = {}, orderBy: [FavoritesListOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: FavoritesListWhereUniqueInput): [FavoritesList!]
+  favoritesList(where: FavoritesListWhereUniqueInput!): FavoritesList
+  favoritesListsCount(where: FavoritesListWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }
