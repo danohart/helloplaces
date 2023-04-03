@@ -142,6 +142,7 @@ type Place {
   timeCount(where: PlaceTimeWhereInput! = {}): Int
   details(where: PlaceDetailWhereInput! = {}, orderBy: [PlaceDetailOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PlaceDetailWhereUniqueInput): [PlaceDetail!]
   detailsCount(where: PlaceDetailWhereInput! = {}): Int
+  googleId: String
 }
 
 type CloudinaryImage_File {
@@ -215,6 +216,7 @@ input PlaceWhereInput {
   subCategory: PlaceCategoryWhereInput
   time: PlaceTimeManyRelationFilter
   details: PlaceDetailManyRelationFilter
+  googleId: StringFilter
 }
 
 input PlaceTimeManyRelationFilter {
@@ -235,6 +237,7 @@ input PlaceOrderByInput {
   name: OrderDirection
   address: OrderDirection
   website: OrderDirection
+  googleId: OrderDirection
 }
 
 input PlaceUpdateInput {
@@ -249,6 +252,7 @@ input PlaceUpdateInput {
   subCategory: PlaceCategoryRelateToOneForUpdateInput
   time: PlaceTimeRelateToManyForUpdateInput
   details: PlaceDetailRelateToManyForUpdateInput
+  googleId: String
 }
 
 input PlaceNeighborhoodRelateToOneForUpdateInput {
@@ -297,6 +301,7 @@ input PlaceCreateInput {
   subCategory: PlaceCategoryRelateToOneForCreateInput
   time: PlaceTimeRelateToManyForCreateInput
   details: PlaceDetailRelateToManyForCreateInput
+  googleId: String
 }
 
 input PlaceNeighborhoodRelateToOneForCreateInput {

@@ -36,6 +36,7 @@ model Place {
   subCategoryId             String?            @map("subCategory") @postgresql.Uuid
   time                      PlaceTime[]        @relation("Place_time")
   details                   PlaceDetail[]      @relation("Place_details")
+  googleId                  String             @default("")
   from_FavoritesList_places FavoritesList[]    @relation("FavoritesList_places")
 
   @@index([neighborhoodId])

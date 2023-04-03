@@ -108,6 +108,7 @@ export const lists: Lists = {
       subCategory: relationship({ ref: 'PlaceCategory' }),
       time: relationship({ ref: 'PlaceTime', many: true, }),
       details: relationship({ ref: 'PlaceDetail', many: true, }),
+      googleId: text(),
     },
     access: {
       operation: {

@@ -106,7 +106,8 @@ var lists = {
       mainCategory: (0, import_fields.relationship)({ ref: "PlaceCategory" }),
       subCategory: (0, import_fields.relationship)({ ref: "PlaceCategory" }),
       time: (0, import_fields.relationship)({ ref: "PlaceTime", many: true }),
-      details: (0, import_fields.relationship)({ ref: "PlaceDetail", many: true })
+      details: (0, import_fields.relationship)({ ref: "PlaceDetail", many: true }),
+      googleId: (0, import_fields.text)()
     },
     access: {
       operation: {
