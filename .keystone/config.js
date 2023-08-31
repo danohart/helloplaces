@@ -258,7 +258,7 @@ var keystone_default = withAuth2(
   (0, import_core2.config)({
     db: {
       provider: "postgresql",
-      url: `postgres://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@hellochicago.cewjmaz24xtz.us-east-2.rds.amazonaws.com/postgres`,
+      url: `${process.env.DATABASE_URL}`,
       onConnect: async (context) => {
       },
       // Optional advanced configuration
