@@ -20,7 +20,7 @@ export default withAuth(
   config({
     db: {
       provider: 'postgresql',
-      url: `${process.env.DATABASE_URL}`,
+      url: `${process.env.DATABASE_URL_NON_POOLING}`,
       onConnect: async context => { /* ... */ },
       // Optional advanced configuration
       enableLogging: true,

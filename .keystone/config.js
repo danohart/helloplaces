@@ -91,6 +91,7 @@ var lists = {
           folder: process.env.CLOUDINARY_API_FOLDER
         }
       }),
+      simpleDescription: (0, import_fields.text)(),
       description: (0, import_fields_document.document)({
         formatting: true,
         layouts: [
@@ -258,7 +259,7 @@ var keystone_default = withAuth2(
   (0, import_core2.config)({
     db: {
       provider: "postgresql",
-      url: `${process.env.DATABASE_URL}`,
+      url: `${process.env.DATABASE_URL_NON_POOLING}`,
       onConnect: async (context) => {
       },
       // Optional advanced configuration

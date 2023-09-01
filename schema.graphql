@@ -135,6 +135,7 @@ type Place {
   website: String
   neighborhood: PlaceNeighborhood
   image: CloudinaryImage_File
+  simpleDescription: String
   description: Place_description_Document
   mainCategory: PlaceCategory
   subCategory: PlaceCategory
@@ -212,6 +213,7 @@ input PlaceWhereInput {
   address: StringFilter
   website: StringFilter
   neighborhood: PlaceNeighborhoodWhereInput
+  simpleDescription: StringFilter
   mainCategory: PlaceCategoryWhereInput
   subCategory: PlaceCategoryWhereInput
   time: PlaceTimeManyRelationFilter
@@ -237,6 +239,7 @@ input PlaceOrderByInput {
   name: OrderDirection
   address: OrderDirection
   website: OrderDirection
+  simpleDescription: OrderDirection
   googleId: OrderDirection
 }
 
@@ -247,6 +250,7 @@ input PlaceUpdateInput {
   website: String
   neighborhood: PlaceNeighborhoodRelateToOneForUpdateInput
   image: Upload
+  simpleDescription: String
   description: JSON
   mainCategory: PlaceCategoryRelateToOneForUpdateInput
   subCategory: PlaceCategoryRelateToOneForUpdateInput
@@ -296,6 +300,7 @@ input PlaceCreateInput {
   website: String
   neighborhood: PlaceNeighborhoodRelateToOneForCreateInput
   image: Upload
+  simpleDescription: String
   description: JSON
   mainCategory: PlaceCategoryRelateToOneForCreateInput
   subCategory: PlaceCategoryRelateToOneForCreateInput

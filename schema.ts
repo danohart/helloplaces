@@ -92,6 +92,7 @@ export const lists: Lists = {
           folder: process.env.CLOUDINARY_API_FOLDER,
         },
       }),
+      simpleDescription: text(),
       description: document({
         formatting: true,
         layouts: [

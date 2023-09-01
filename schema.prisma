@@ -29,6 +29,7 @@ model Place {
   neighborhood              PlaceNeighborhood? @relation("Place_neighborhood", fields: [neighborhoodId], references: [id])
   neighborhoodId            String?            @map("neighborhood") @postgresql.Uuid
   image                     Json?
+  simpleDescription         String             @default("")
   description               Json               @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
   mainCategory              PlaceCategory?     @relation("Place_mainCategory", fields: [mainCategoryId], references: [id])
   mainCategoryId            String?            @map("mainCategory") @postgresql.Uuid
