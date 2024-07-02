@@ -29,7 +29,7 @@ export default withAuth(
     server: {
       port: 7777,
       cors: { 
-        origin: ['http://localhost:3001', 'https://www.hellochicago.co', 'https://www.hellologansquare.com'],
+        origin: ['http://localhost:3001', 'https://www.hellochicago.co', 'https://www.hellologansquare.com', 'https://hellologansquare.vercel.app'],
       },
     },
     lists,
